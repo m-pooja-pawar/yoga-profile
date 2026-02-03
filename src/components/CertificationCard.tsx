@@ -1,3 +1,5 @@
+'use client'
+
 interface CertificationCardProps {
   title: string
   description: string
@@ -10,9 +12,9 @@ export default function CertificationCard({
   hours,
 }: CertificationCardProps) {
   return (
-    <div className="card">
+    <div className="card group">
       <div className="flex items-start">
-        <div className="flex-shrink-0 w-10 h-10 bg-sage-100 rounded-full flex items-center justify-center mr-4">
+        <div className="flex-shrink-0 w-10 h-10 bg-sage-100 rounded-full flex items-center justify-center mr-4 icon-float">
           <svg
             className="w-5 h-5 text-sage-600"
             fill="none"

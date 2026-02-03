@@ -31,12 +31,16 @@
 
   .btn-primary {
     @apply inline-block bg-sage-600 text-white px-6 py-3 rounded-md font-sans font-medium
-           hover:bg-sage-700 transition-colors duration-200;
+           hover:bg-sage-700 hover:shadow-lg hover:-translate-y-0.5
+           active:translate-y-0 active:shadow-md
+           transition-all duration-300 ease-out;
   }
 
   .btn-secondary {
     @apply inline-block border-2 border-sage-600 text-sage-700 px-6 py-3 rounded-md font-sans font-medium
-           hover:bg-sage-50 transition-colors duration-200;
+           hover:bg-sage-50 hover:shadow-md hover:-translate-y-0.5
+           active:translate-y-0
+           transition-all duration-300 ease-out;
   }
 
   .page-title {
@@ -48,6 +52,103 @@
   }
 
   .card {
+    @apply bg-white border border-sage-100 rounded-lg p-6 shadow-sm
+           hover:shadow-md hover:-translate-y-1 hover:border-sage-200
+           transition-all duration-300 ease-out;
+  }
+
+  .card-static {
     @apply bg-white border border-sage-100 rounded-lg p-6 shadow-sm;
+  }
+
+  /* Icon hover animation */
+  .icon-float {
+    @apply transition-transform duration-300;
+  }
+
+  .group:hover .icon-float {
+    @apply -translate-y-1;
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-sage-600 transition-all duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Navbar scroll state */
+  .navbar-scrolled {
+    @apply bg-white/95 backdrop-blur-sm shadow-sm;
+  }
+
+  .navbar-top {
+    @apply bg-white;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }

@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getDictionary } from '@/i18n/dictionaries'
 import type { Locale } from '@/i18n/config'
+import HeroSection from '@/components/animations/HeroSection'
+import FadeIn from '@/components/animations/FadeIn'
+import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer'
 
 export async function generateMetadata({
   params,
@@ -69,14 +72,7 @@ export default async function OfferingsPage({
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-sage-50">
-        <div className="container-custom section-padding">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="page-title">{dict.offerings.title}</h1>
-            <p className="text-lg text-gray-600">{dict.offerings.subtitle}</p>
-          </div>
-        </div>
-      </section>
+      <HeroSection title={dict.offerings.title} subtitle={dict.offerings.subtitle} />
 
       {/* Offerings */}
       <section className="section-padding">
@@ -84,8 +80,9 @@ export default async function OfferingsPage({
           <div className="max-w-4xl mx-auto">
             <div className="space-y-16">
               {offerings.map((offering, index) => (
-                <div
+                <FadeIn
                   key={offering.title}
+                  delay={index * 0.1}
                   className={`pb-16 ${
                     index < offerings.length - 1 ? 'border-b border-sage-100' : ''
                   }`}
@@ -99,17 +96,17 @@ export default async function OfferingsPage({
                     <h3 className="text-lg font-serif text-gray-800 mb-3">
                       {dict.offerings.whatToExpect}
                     </h3>
-                    <ul className="space-y-2">
+                    <StaggerContainer className="space-y-2" staggerDelay={0.05}>
                       {offering.details.map((detail, detailIndex) => (
-                        <li
+                        <StaggerItem
                           key={detailIndex}
                           className="flex items-start text-gray-600"
                         >
                           <span className="text-sage-500 mr-3">•</span>
                           {detail}
-                        </li>
+                        </StaggerItem>
                       ))}
-                    </ul>
+                    </StaggerContainer>
                   </div>
 
                   <div className="bg-sage-50 rounded-lg p-4">
@@ -123,13 +120,14 @@ export default async function OfferingsPage({
                     <div className="mt-6">
                       <Link
                         href={offering.link}
-                        className="text-sage-600 font-medium hover:text-sage-700"
+                        className="text-sage-600 font-medium hover:text-sage-700 inline-flex items-center group"
                       >
-                        {offering.linkText} &rarr;
+                        {offering.linkText}
+                        <span className="ml-1 transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
                       </Link>
                     </div>
                   )}
-                </div>
+                </FadeIn>
               ))}
             </div>
           </div>
@@ -140,13 +138,19 @@ export default async function OfferingsPage({
       <section className="bg-sage-50 section-padding">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="section-title">{dict.offerings.approachTitle}</h2>
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              {dict.offerings.approachP1}
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              {dict.offerings.approachP2}
-            </p>
+            <FadeIn>
+              <h2 className="section-title">{dict.offerings.approachTitle}</h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                {dict.offerings.approachP1}
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="text-gray-600 leading-relaxed">
+                {dict.offerings.approachP2}
+              </p>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -155,11 +159,17 @@ export default async function OfferingsPage({
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="section-title">{dict.offerings.readyTitle}</h2>
-            <p className="text-gray-600 mb-8">{dict.offerings.readySubtitle}</p>
-            <Link href={`/${locale}/contact`} className="btn-primary">
-              {dict.offerings.getInTouch}
-            </Link>
+            <FadeIn>
+              <h2 className="section-title">{dict.offerings.readyTitle}</h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-gray-600 mb-8">{dict.offerings.readySubtitle}</p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <Link href={`/${locale}/contact`} className="btn-primary">
+                {dict.offerings.getInTouch}
+              </Link>
+            </FadeIn>
           </div>
         </div>
       </section>

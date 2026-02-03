@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { getDictionary } from '@/i18n/dictionaries'
 import type { Locale } from '@/i18n/config'
+import HeroSection from '@/components/animations/HeroSection'
+import FadeIn from '@/components/animations/FadeIn'
+import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer'
 
 export async function generateMetadata({
   params,
@@ -89,65 +92,66 @@ export default async function ContactPage({
     },
   ]
 
+  const includeItems = [
+    { label: dict.contact.include1Label, text: dict.contact.include1Text },
+    { label: dict.contact.include2Label, text: dict.contact.include2Text },
+    { label: dict.contact.include3Label, text: dict.contact.include3Text },
+    { label: dict.contact.include4Label, text: dict.contact.include4Text },
+  ]
+
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-sage-50">
-        <div className="container-custom section-padding">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="page-title">{dict.contact.title}</h1>
-            <p className="text-lg text-gray-600">{dict.contact.subtitle}</p>
-          </div>
-        </div>
-      </section>
+      <HeroSection title={dict.contact.title} subtitle={dict.contact.subtitle} />
 
       {/* Contact Methods */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto">
-            <div className="space-y-6">
+            <StaggerContainer className="space-y-6">
               {contactMethods.map((method) => (
-                <a
-                  key={method.name}
-                  href={method.href}
-                  target={method.href.startsWith('http') ? '_blank' : undefined}
-                  rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="card block hover:shadow-md transition-shadow duration-200"
-                >
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center text-sage-600 mr-4">
-                      {method.icon}
+                <StaggerItem key={method.name}>
+                  <a
+                    href={method.href}
+                    target={method.href.startsWith('http') ? '_blank' : undefined}
+                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="card block group"
+                  >
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center text-sage-600 mr-4 icon-float">
+                        {method.icon}
+                      </div>
+                      <div className="flex-grow">
+                        <h3 className="font-serif text-lg text-gray-900 mb-1">
+                          {method.name}
+                        </h3>
+                        <p className="text-sage-600 font-medium mb-2">
+                          {method.value}
+                        </p>
+                        <p className="text-gray-600 text-sm">
+                          {method.description}
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 text-sage-400 transition-transform duration-200 group-hover:translate-x-1">
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
                     </div>
-                    <div className="flex-grow">
-                      <h3 className="font-serif text-lg text-gray-900 mb-1">
-                        {method.name}
-                      </h3>
-                      <p className="text-sage-600 font-medium mb-2">
-                        {method.value}
-                      </p>
-                      <p className="text-gray-600 text-sm">
-                        {method.description}
-                      </p>
-                    </div>
-                    <div className="flex-shrink-0 text-sage-400">
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </a>
+                  </a>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
@@ -156,38 +160,21 @@ export default async function ContactPage({
       <section className="bg-sage-50 section-padding">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="section-title">{dict.contact.includeTitle}</h2>
+            <FadeIn>
+              <h2 className="section-title">{dict.contact.includeTitle}</h2>
+            </FadeIn>
             <div className="text-left mt-8">
-              <ul className="space-y-4 text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-sage-500 mr-3 mt-1">•</span>
-                  <span>
-                    <strong className="text-gray-800">{dict.contact.include1Label}</strong>{' '}
-                    {dict.contact.include1Text}
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-sage-500 mr-3 mt-1">•</span>
-                  <span>
-                    <strong className="text-gray-800">{dict.contact.include2Label}</strong>{' '}
-                    {dict.contact.include2Text}
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-sage-500 mr-3 mt-1">•</span>
-                  <span>
-                    <strong className="text-gray-800">{dict.contact.include3Label}</strong>{' '}
-                    {dict.contact.include3Text}
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-sage-500 mr-3 mt-1">•</span>
-                  <span>
-                    <strong className="text-gray-800">{dict.contact.include4Label}</strong>{' '}
-                    {dict.contact.include4Text}
-                  </span>
-                </li>
-              </ul>
+              <StaggerContainer className="space-y-4 text-gray-600" staggerDelay={0.08}>
+                {includeItems.map((item, index) => (
+                  <StaggerItem key={index} className="flex items-start">
+                    <span className="text-sage-500 mr-3 mt-1">•</span>
+                    <span>
+                      <strong className="text-gray-800">{item.label}</strong>{' '}
+                      {item.text}
+                    </span>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
             </div>
           </div>
         </div>
@@ -196,9 +183,9 @@ export default async function ContactPage({
       {/* Response Time */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="max-w-2xl mx-auto text-center">
+          <FadeIn className="max-w-2xl mx-auto text-center">
             <p className="text-gray-600">{dict.contact.responseText}</p>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </>

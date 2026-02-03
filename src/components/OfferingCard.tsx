@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 interface OfferingCardProps {
   title: string
@@ -10,7 +13,7 @@ interface OfferingCardProps {
 export default function OfferingCard({ title, description, href, learnMoreText = 'Learn more' }: OfferingCardProps) {
   const CardContent = () => (
     <>
-      <div className="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-4">
+      <div className="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-4 icon-float">
         <svg
           className="w-6 h-6 text-sage-600"
           fill="none"
@@ -28,8 +31,15 @@ export default function OfferingCard({ title, description, href, learnMoreText =
       <h3 className="font-serif text-xl text-gray-900 mb-3">{title}</h3>
       <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
       {href && (
-        <span className="inline-block mt-4 text-sage-600 text-sm font-medium">
-          {learnMoreText} &rarr;
+        <span className="inline-flex items-center mt-4 text-sage-600 text-sm font-medium group-hover:text-sage-700 transition-colors">
+          {learnMoreText}
+          <motion.span
+            className="ml-1"
+            initial={{ x: 0 }}
+            whileHover={{ x: 4 }}
+          >
+            &rarr;
+          </motion.span>
         </span>
       )}
     </>
@@ -37,14 +47,14 @@ export default function OfferingCard({ title, description, href, learnMoreText =
 
   if (href) {
     return (
-      <Link href={href} className="card block hover:shadow-md transition-shadow duration-200">
+      <Link href={href} className="card block group">
         <CardContent />
       </Link>
     )
   }
 
   return (
-    <div className="card">
+    <div className="card group">
       <CardContent />
     </div>
   )

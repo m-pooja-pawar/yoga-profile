@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import type { Locale } from '@/i18n/config'
 
 interface FooterProps {
@@ -33,21 +36,37 @@ export default function Footer({ locale, dict }: FooterProps) {
   ]
 
   return (
-    <footer className="bg-sage-50 border-t border-sage-100">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.6 }}
+      className="bg-sage-50 border-t border-sage-100"
+    >
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <h3 className="font-serif text-xl text-sage-700 mb-4">
               {dict.common.yogaWellness}
             </h3>
             <p className="text-gray-600 text-sm leading-relaxed">
               {dict.footer.tagline}
             </p>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h4 className="font-serif text-lg text-gray-900 mb-4">
               {dict.footer.quickLinks}
             </h4>
@@ -56,17 +75,22 @@ export default function Footer({ locale, dict }: FooterProps) {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 text-sm hover:text-sage-600 transition-colors duration-200"
+                    className="text-gray-600 text-sm hover:text-sage-600 transition-colors duration-200 inline-block link-underline"
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Connect */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <h4 className="font-serif text-lg text-gray-900 mb-4">
               {dict.footer.connect}
             </h4>
@@ -74,7 +98,7 @@ export default function Footer({ locale, dict }: FooterProps) {
               <li>
                 <a
                   href="mailto:hello@yogawellness.com"
-                  className="hover:text-sage-600 transition-colors duration-200"
+                  className="hover:text-sage-600 transition-colors duration-200 inline-block link-underline"
                 >
                   hello@yogawellness.com
                 </a>
@@ -84,7 +108,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                   href="https://wa.me/1234567890"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-sage-600 transition-colors duration-200"
+                  className="hover:text-sage-600 transition-colors duration-200 inline-block link-underline"
                 >
                   WhatsApp
                 </a>
@@ -94,21 +118,27 @@ export default function Footer({ locale, dict }: FooterProps) {
                   href="https://instagram.com/yogawellness"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-sage-600 transition-colors duration-200"
+                  className="hover:text-sage-600 transition-colors duration-200 inline-block link-underline"
                 >
                   Instagram
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-sage-200">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-12 pt-8 border-t border-sage-200"
+        >
           <p className="text-center text-sm text-gray-500">
             &copy; {currentYear} {dict.common.yogaWellness}. {dict.footer.rights}
           </p>
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   )
 }
