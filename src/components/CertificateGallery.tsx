@@ -53,13 +53,13 @@ export default function CertificateGallery({
               {/* Certificate Thumbnail */}
               <button
                 onClick={() => openModal(cert)}
-                className="flex-shrink-0 w-full md:w-48 h-36 relative bg-gray-100 rounded-lg overflow-hidden group cursor-pointer"
+                className="flex-shrink-0 w-full md:w-48 h-40 relative bg-sage-50 rounded-lg overflow-hidden group cursor-pointer"
               >
                 <Image
                   src={cert.imagePath}
                   alt={cert.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 192px"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
@@ -139,19 +139,18 @@ export default function CertificateGallery({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-              className="relative w-full max-w-4xl max-h-[85vh] bg-white rounded-lg overflow-hidden shadow-2xl"
+              className="relative max-w-4xl bg-white rounded-lg overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full h-full min-h-[50vh]">
-                <Image
-                  src={selectedCertificate.imagePath}
-                  alt={selectedCertificate.title}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 1024px) 100vw, 1024px"
-                  priority
-                />
-              </div>
+              <Image
+                src={selectedCertificate.imagePath}
+                alt={selectedCertificate.title}
+                width={1200}
+                height={1600}
+                className="max-w-full max-h-[85vh] w-auto h-auto object-contain"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                priority
+              />
             </motion.div>
 
             {/* Navigation hint */}

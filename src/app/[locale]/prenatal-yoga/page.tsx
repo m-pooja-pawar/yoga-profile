@@ -5,6 +5,32 @@ import type { Locale } from '@/i18n/config'
 import HeroSection from '@/components/animations/HeroSection'
 import FadeIn from '@/components/animations/FadeIn'
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer'
+import PrenatalGallery, { type GalleryImage } from '@/components/PrenatalGallery'
+
+// Prenatal yoga images with their actual dimensions for proper aspect ratio display
+// GIF is at index 0 (top) as the featured element
+const prenatalImages: GalleryImage[] = [
+  // GIF at the top as featured element
+  { id: 'prenatal-seating-sequence', src: '/prenatal/prenatal-seating-sequence.gif', alt: 'Prenatal yoga seating sequence', width: 598, height: 480, isGif: true },
+  // All photos follow in order
+  { id: 'prenatal-001', src: '/prenatal/prenatal-001.jpg', alt: 'Prenatal yoga pose 1', width: 3817, height: 4096 },
+  { id: 'prenatal-002', src: '/prenatal/prenatal-002.jpg', alt: 'Prenatal yoga pose 2', width: 3843, height: 4096 },
+  { id: 'prenatal-003', src: '/prenatal/prenatal-003.jpg', alt: 'Prenatal yoga pose 3', width: 4096, height: 4096 },
+  { id: 'prenatal-004', src: '/prenatal/prenatal-004.jpg', alt: 'Prenatal yoga pose 4', width: 3736, height: 4096 },
+  { id: 'prenatal-005', src: '/prenatal/prenatal-005.jpg', alt: 'Prenatal yoga pose 5', width: 4096, height: 4096 },
+  { id: 'prenatal-006', src: '/prenatal/prenatal-006.jpg', alt: 'Prenatal yoga pose 6', width: 4096, height: 3402 },
+  { id: 'prenatal-007', src: '/prenatal/prenatal-007.jpg', alt: 'Prenatal yoga pose 7', width: 4096, height: 4096 },
+  { id: 'prenatal-008', src: '/prenatal/prenatal-008.jpg', alt: 'Prenatal yoga pose 8', width: 4096, height: 2788 },
+  { id: 'prenatal-009', src: '/prenatal/prenatal-009.jpg', alt: 'Prenatal yoga pose 9', width: 4096, height: 3015 },
+  { id: 'prenatal-010', src: '/prenatal/prenatal-010.jpg', alt: 'Prenatal yoga pose 10', width: 4096, height: 2723 },
+  { id: 'prenatal-011', src: '/prenatal/prenatal-011.jpg', alt: 'Prenatal yoga pose 11', width: 1921, height: 4096 },
+  { id: 'prenatal-012', src: '/prenatal/prenatal-012.jpg', alt: 'Prenatal yoga pose 12', width: 3346, height: 4096 },
+  { id: 'prenatal-013', src: '/prenatal/prenatal-013.jpg', alt: 'Prenatal yoga pose 13', width: 4096, height: 3868 },
+  { id: 'prenatal-014', src: '/prenatal/prenatal-014.jpg', alt: 'Prenatal yoga pose 14', width: 4096, height: 4096 },
+  { id: 'prenatal-015', src: '/prenatal/prenatal-015.jpg', alt: 'Prenatal yoga pose 15', width: 4096, height: 4096 },
+  { id: 'prenatal-016', src: '/prenatal/prenatal-016.jpg', alt: 'Prenatal yoga pose 16', width: 4096, height: 2078 },
+  { id: 'prenatal-017', src: '/prenatal/prenatal-017.jpg', alt: 'Prenatal yoga pose 17', width: 4096, height: 4096 },
+]
 
 export async function generateMetadata({
   params,
@@ -119,7 +145,7 @@ export default async function PrenatalYogaPage({
         </div>
       </section>
 
-      {/* Pose Gallery Placeholder */}
+      {/* Pose Gallery */}
       <section className="bg-sage-50 section-padding">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
@@ -127,37 +153,14 @@ export default async function PrenatalYogaPage({
               <h2 className="section-title text-center mb-8">{dict.prenatal.galleryTitle}</h2>
             </FadeIn>
 
-            {/* Placeholder Grid */}
-            <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-              {[1, 2, 3, 4, 5, 6].map((index) => (
-                <StaggerItem key={index}>
-                  <div className="aspect-[4/5] bg-sage-100 rounded-lg flex items-center justify-center hover:bg-sage-150 transition-colors duration-300">
-                    <div className="text-center p-4">
-                      <svg
-                        className="w-12 h-12 text-sage-300 mx-auto mb-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1}
-                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                      <span className="text-sage-400 text-sm">{dict.prenatal.comingSoon}</span>
-                    </div>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-
-            <FadeIn delay={0.3}>
-              <p className="text-center text-gray-500 text-sm mt-8">
-                {dict.prenatal.galleryNote}
-              </p>
-            </FadeIn>
+            <PrenatalGallery
+              images={prenatalImages}
+              featuredIndex={0}
+              viewText={dict.prenatal.galleryView}
+              clickOutsideText={dict.prenatal.galleryClickOutside}
+              prevText={dict.prenatal.galleryPrev}
+              nextText={dict.prenatal.galleryNext}
+            />
           </div>
         </div>
       </section>
