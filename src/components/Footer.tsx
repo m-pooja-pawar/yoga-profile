@@ -97,10 +97,10 @@ export default function Footer({ locale, dict }: FooterProps) {
             <ul className="space-y-2 text-sm text-gray-600">
               <li>
                 <a
-                  href="mailto:hello@yogawellness.com"
+                  href="mailto:hello@yogaabhyasa.com"
                   className="hover:text-sage-600 transition-colors duration-200 inline-block link-underline"
                 >
-                  hello@yogawellness.com
+                  hello@yogaabhyasa.com
                 </a>
               </li>
               <li>
