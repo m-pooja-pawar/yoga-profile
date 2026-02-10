@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Yoga Wellness | Traditional Yoga for Holistic Health",
+    "title": "Yoga Abhyasa | Traditional Yoga for Holistic Health",
     "description": "Certified yoga teacher specializing in Traditional Yoga, Prenatal & Postnatal Yoga, and holistic wellness."
   },
   "nav": {
@@ -203,6 +203,9 @@
   },
   "common": {
     "learnMore": "Learn more",
-    "yogaWellness": "Yoga Wellness"
+    "yogaWellness": "Yoga Abhyasa",
+    "teacherName": "Pooja Pawar",
+    "teacherTagline": "Certified Yoga Teacher",
+    "profileAlt": "Pooja Pawar - Yoga Teacher"
   }
 }

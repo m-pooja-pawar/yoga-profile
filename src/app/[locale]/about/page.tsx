@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { getDictionary } from '@/i18n/dictionaries'
 import type { Locale } from '@/i18n/config'
@@ -44,7 +45,23 @@ export default async function AboutPage({
   return (
     <>
       {/* Hero Section */}
-      <HeroSection title={dict.about.title} subtitle={dict.about.subtitle} />
+      <HeroSection
+        title={dict.common.teacherName}
+        subtitle={dict.about.subtitle}
+        preContent={
+          <div className="mb-4">
+            <div className="w-36 h-36 sm:w-40 sm:h-40 mx-auto rounded-full overflow-hidden border-4 border-sage-200 shadow-lg">
+              <Image
+                src="/profilePhoto.jpg"
+                alt={dict.common.profileAlt}
+                width={160}
+                height={160}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        }
+      />
 
       {/* Main Content */}
       <section className="section-padding">

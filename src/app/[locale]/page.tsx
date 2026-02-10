@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { getDictionary } from '@/i18n/dictionaries'
 import type { Locale } from '@/i18n/config'
@@ -38,6 +39,22 @@ export default async function Home({
       <HeroSection
         title={dict.home.heroTitle}
         subtitle={dict.home.heroSubtitle}
+        preContent={
+          <div className="mb-6">
+            <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-sage-200 shadow-md">
+              <Image
+                src="/profilePhoto.jpg"
+                alt={dict.common.profileAlt}
+                width={128}
+                height={128}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
+            <h2 className="font-serif text-2xl text-gray-900">{dict.common.teacherName}</h2>
+            <p className="text-sage-600 text-sm mt-1">{dict.common.teacherTagline}</p>
+          </div>
+        }
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
           <Link href={`/${locale}/contact`} className="btn-primary">
