@@ -18,7 +18,7 @@ interface NavbarProps {
       contact: string
     }
     common: {
-      yogaWellness: string
+      yogaAbhyasa: string
     }
   }
 }
@@ -73,7 +73,7 @@ export default function Navbar({ locale, dict }: NavbarProps) {
             href={`/${locale}`}
             className="font-serif text-xl md:text-2xl text-sage-700 hover:text-sage-800 transition-colors duration-200"
           >
-            {dict.common.yogaWellness}
+            {dict.common.yogaAbhyasa}
           </Link>
 
           {/* Desktop Navigation */}

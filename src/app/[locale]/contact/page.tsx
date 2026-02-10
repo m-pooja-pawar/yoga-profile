@@ -72,7 +72,7 @@ export default async function ContactPage({
     {
       name: dict.contact.instagram,
       value: dict.contact.instagramValue,
-      href: 'https://instagram.com/yogawellness',
+      href: 'https://instagram.com/yogaabhyasa',
       description: dict.contact.instagramDesc,
       icon: (
         <svg

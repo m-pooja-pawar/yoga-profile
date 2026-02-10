@@ -20,7 +20,7 @@ interface FooterProps {
       rights: string
     }
     common: {
-      yogaWellness: string
+      yogaAbhyasa: string
     }
   }
 }
@@ -53,7 +53,7 @@ export default function Footer({ locale, dict }: FooterProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <h3 className="font-serif text-xl text-sage-700 mb-4">
-              {dict.common.yogaWellness}
+              {dict.common.yogaAbhyasa}
             </h3>
             <p className="text-gray-600 text-sm leading-relaxed">
               {dict.footer.tagline}
@@ -115,7 +115,7 @@ export default function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="https://instagram.com/yogawellness"
+                  href="https://instagram.com/yogaabhyasa"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-sage-600 transition-colors duration-200 inline-block link-underline"
@@ -135,7 +135,7 @@ export default function Footer({ locale, dict }: FooterProps) {
           className="mt-12 pt-8 border-t border-sage-200"
         >
           <p className="text-center text-sm text-gray-500">
-            &copy; {currentYear} {dict.common.yogaWellness}. {dict.footer.rights}
+            &copy; {currentYear} {dict.common.yogaAbhyasa}. {dict.footer.rights}
           </p>
         </motion.div>
       </div>

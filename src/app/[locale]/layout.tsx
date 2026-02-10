@@ -20,7 +20,7 @@ export async function generateMetadata({
   return {
     title: {
       default: dict.metadata.title,
-      template: `%s | ${dict.common.yogaWellness}`,
+      template: `%s | ${dict.common.yogaAbhyasa}`,
     },
     description: dict.metadata.description,
     keywords: ['yoga', 'prenatal yoga', 'postnatal yoga', 'holistic wellness', 'traditional yoga', 'yoga teacher'],
