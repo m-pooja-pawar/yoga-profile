@@ -39,6 +39,8 @@ export default async function OfferingsPage({
         dict.offerings.traditional.detail5,
       ],
       ideal: dict.offerings.traditional.ideal,
+      link: `/${locale}/hatha-yoga`,
+      linkText: dict.offerings.viewHathaGuide,
     },
     {
       title: dict.offerings.prenatal.title,
@@ -66,6 +68,8 @@ export default async function OfferingsPage({
         dict.offerings.postnatal.detail6,
       ],
       ideal: dict.offerings.postnatal.ideal,
+      link: `/${locale}/hatha-yoga`,
+      linkText: dict.offerings.viewHathaGuide,
     },
   ]
 

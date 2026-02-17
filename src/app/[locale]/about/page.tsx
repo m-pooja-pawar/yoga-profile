@@ -125,7 +125,7 @@ export default async function AboutPage({
                       <h3 className="font-serif text-lg text-gray-900 mb-2">
                         {area.title}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 text-base">
                         {area.desc}
                       </p>
                     </div>

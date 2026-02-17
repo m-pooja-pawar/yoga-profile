@@ -14,6 +14,7 @@ interface NavbarProps {
       about: string
       offerings: string
       prenatalYoga: string
+      hathaYoga: string
       certifications: string
       contact: string
     }
@@ -40,6 +41,7 @@ export default function Navbar({ locale, dict }: NavbarProps) {
     { name: dict.nav.home, href: `/${locale}` },
     { name: dict.nav.about, href: `/${locale}/about` },
     { name: dict.nav.offerings, href: `/${locale}/offerings` },
+    { name: dict.nav.hathaYoga, href: `/${locale}/hatha-yoga` },
     { name: dict.nav.prenatalYoga, href: `/${locale}/prenatal-yoga` },
     { name: dict.nav.certifications, href: `/${locale}/certifications` },
     { name: dict.nav.contact, href: `/${locale}/contact` },

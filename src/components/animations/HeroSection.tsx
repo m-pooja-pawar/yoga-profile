@@ -21,7 +21,7 @@ export default function HeroSection({ title, subtitle, preContent, children, cla
           <div className="max-w-3xl mx-auto text-center">
             {preContent}
             <h1 className="page-title">{title}</h1>
-            {subtitle && <p className="text-lg text-gray-600">{subtitle}</p>}
+            {subtitle && <p className="text-lg md:text-xl text-gray-600">{subtitle}</p>}
             {children}
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function HeroSection({ title, subtitle, preContent, children, cla
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: preContent ? 0.3 : 0.15, ease: [0.25, 0.4, 0.25, 1] }}
-              className="text-lg text-gray-600"
+              className="text-lg md:text-xl text-gray-600"
             >
               {subtitle}
             </motion.p>

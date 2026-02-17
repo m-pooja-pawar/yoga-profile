@@ -11,6 +11,8 @@ interface FooterProps {
       about: string
       offerings: string
       prenatalYoga: string
+      hathaYoga: string
+      certifications: string
       contact: string
     }
     footer: {
@@ -31,7 +33,9 @@ export default function Footer({ locale, dict }: FooterProps) {
   const footerLinks = [
     { name: dict.nav.about, href: `/${locale}/about` },
     { name: dict.nav.offerings, href: `/${locale}/offerings` },
+    { name: dict.nav.hathaYoga, href: `/${locale}/hatha-yoga` },
     { name: dict.nav.prenatalYoga, href: `/${locale}/prenatal-yoga` },
+    { name: dict.nav.certifications, href: `/${locale}/certifications` },
     { name: dict.nav.contact, href: `/${locale}/contact` },
   ]
 
@@ -55,7 +59,7 @@ export default function Footer({ locale, dict }: FooterProps) {
             <h3 className="font-serif text-xl text-sage-700 mb-4">
               {dict.common.yogaAbhyasa}
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-base leading-relaxed">
               {dict.footer.tagline}
             </p>
           </motion.div>
@@ -75,7 +79,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 text-sm hover:text-sage-600 transition-colors duration-200 inline-block link-underline"
+                    className="text-gray-600 text-base hover:text-sage-600 transition-colors duration-200 inline-block link-underline"
                   >
                     {link.name}
                   </Link>
@@ -94,7 +98,7 @@ export default function Footer({ locale, dict }: FooterProps) {
             <h4 className="font-serif text-lg text-gray-900 mb-4">
               {dict.footer.connect}
             </h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-base text-gray-600">
               <li>
                 <a
                   href="mailto:hello@yogaabhyasa.com"

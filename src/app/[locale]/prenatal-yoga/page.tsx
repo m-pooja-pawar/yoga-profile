@@ -114,7 +114,7 @@ export default async function PrenatalYogaPage({
                   <h2 className="font-serif text-lg text-gray-900 mb-2">
                     {dict.prenatal.disclaimerTitle}
                   </h2>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-base leading-relaxed">
                     {dict.prenatal.disclaimerText}
                   </p>
                 </div>
@@ -182,7 +182,7 @@ export default async function PrenatalYogaPage({
                       </svg>
                     </div>
                     <h3 className="font-serif text-lg text-gray-900 mb-2">{feature.title}</h3>
-                    <p className="text-gray-600 text-sm">{feature.desc}</p>
+                    <p className="text-gray-600 text-base">{feature.desc}</p>
                   </div>
                 </StaggerItem>
               ))}
